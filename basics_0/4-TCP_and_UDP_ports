@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # Displays listening ports (only servers) with PID and program name
 
 sudo netstat -lp
