@@ -1,4 +1,4 @@
 #!/bin/bash
 # Displays listening ports (only servers) with PID and program name
 
-sudo netstat -nlp
+sudo netstat -lp
