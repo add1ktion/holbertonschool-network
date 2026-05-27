@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # Configures the Ubuntu server so localhost resolves to 127.0.0.2
 # and facebook.com resolves to 8.8.8.8
 
