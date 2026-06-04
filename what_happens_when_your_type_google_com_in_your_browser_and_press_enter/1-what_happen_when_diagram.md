@@ -27,7 +27,7 @@ graph TD
     end
 
     %% Request Flow
-    A -->|Input: [https://www.google.com](https://www.google.com)| B
+    A -->|Input: https://www.google.com| B
     B -->|Returns IP: 142.250.190.46| A
     
     A ==>|2. HTTPS Request via Port 443<br>SSL/TLS Encrypted Tunnel| C
