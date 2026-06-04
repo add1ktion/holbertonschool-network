@@ -3,47 +3,51 @@
 This diagram illustrates the step-by-step infrastructure and network flow behind a standard HTTPS request to Google's infrastructure.
 
 ## Diagram
+
 ```mermaid
 graph TD
-    %% Style & Configuration des sous-graphes
-    subgraph Client_Side [Zone Client]
-        A[Navigateur de l'Utilisateur]
+    %% Style & Configuration
+    subgraph Client_Side [Client Side]
+        A[User Browser]
     end
 
-    subgraph Network_Zone [Réseau & Sécurité]
+    subgraph Network_Zone [Network & Security]
         B((1. DNS Resolution<br>Domain to IP))
-        C{3. Pare-feu / Firewall<br>Filtrage des Paquets}
+        C{3. Firewall<br>Packet Filtering}
     end
 
-    subgraph Google_Infrastructure [Infrastructure Google]
-        D[4. Load Balancer<br>Répartition de Charge]
+    subgraph Google_Infrastructure [Google Infrastructure]
+        D[4. Load Balancer<br>Traffic Distribution]
         
         subgraph Server_Cluster [Backend Stack]
-            E[5. Serveur Web<br>Nginx / Apache]
-            F[6. Serveur d'Application<br>Logique Métier]
-            G[(7. Base de Données<br>Google Spanner / Clusters)]
+            E[5. Web Server<br>Nginx / Apache]
+            F[6. Application Server<br>Business Logic]
+            G[(7. Database<br>Google Spanner / Clusters)]
         end
     end
 
-    %% Flux et Connexions de la Requête
-    A -->|Saisie: https://www.google.com| B
-    B -->|Renvoie IP: 142.250.190.46| A
+    %% Request Flow
+    A -->|Input: [https://www.google.com](https://www.google.com)| B
+    B -->|Returns IP: 142.250.190.46| A
     
-    A ==>|2. Requête HTTPS via Port 443<br>Tunnel Chiffré SSL/TLS| C
+    A ==>|2. HTTPS Request via Port 443<br>SSL/TLS Encrypted Tunnel| C
     
-    C ==>|Trafic Sécurisé & Autorisé| D
+    C ==>|Secure and Allowed Traffic| D
     
-    D ==>|Distribution du Trafic| E
-    E ==>|Requête Dynamique| F
-    F <=>|Requête & Retour de Données| G
+    D ==>|Traffic Distribution| E
+    E ==>|Dynamic Request| F
     
-    %% Flux de Retour de la Réponse
-    F .->|Génère Page HTML/CSS/JS| E
-    E .->|Réponse HTTP| D
-    D .->|Flux Chiffré| C
-    C .=>|Rendu de la Page Accueil| A
+    %% Fixed Bidirectional Link Syntax for Database
+    F -->|Query Data| G
+    G -->|Return Data| F
+    
+    %% Response Flow
+    F .->|Generates HTML/CSS/JS Page| E
+    E .->|HTTP Response| D
+    D .->|Encrypted Stream| C
+    C .=>|Renders Homepage| A
 
-    %% Styles Visuels
+    %% Visual Styles
     style A fill:#ea4335,stroke:#333,stroke-width:2px,color:#fff
     style B fill:#fabc05,stroke:#333,stroke-width:1px
     style C fill:#4285f4,stroke:#333,stroke-width:2px,color:#fff
@@ -53,7 +57,7 @@ graph TD
     linkStyle 2 stroke:#34a853,stroke-width:3px;
     linkStyle 3 stroke:#34a853,stroke-width:3px;
     linkStyle 4 stroke:#34a853,stroke-width:3px;
-    linkStyle 8 stroke:#ea4335,stroke-width:3px;
+    linkStyle 9 stroke:#ea4335,stroke-width:3px;
 ```
 
 ## Architectural Workflow Breakdown
