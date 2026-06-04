@@ -27,7 +27,7 @@ graph TD
     end
 
     %% Request Flow
-    A -->|Input: https://www.google.com| B
+    A -->|Input: [https://www.google.com](https://www.google.com)| B
     B -->|Returns IP: 142.250.190.46| A
     
     A ==>|2. HTTPS Request via Port 443<br>SSL/TLS Encrypted Tunnel| C
@@ -37,15 +37,15 @@ graph TD
     D ==>|Traffic Distribution| E
     E ==>|Dynamic Request| F
     
-    %% Fixed Bidirectional Link Syntax for Database
+    %% Bidirectional Link Syntax for Database
     F -->|Query Data| G
     G -->|Return Data| F
     
-    %% Response Flow
-    F .->|Generates HTML/CSS/JS Page| E
-    E .->|HTTP Response| D
-    D .->|Encrypted Stream| C
-    C .=>|Renders Homepage| A
+    %% Response Flow (Fixed syntax for GitHub)
+    F -->|Generates HTML/CSS/JS Page| E
+    E -->|HTTP Response| D
+    D ==>|Encrypted Stream| C
+    C ==>|Renders Homepage| A
 
     %% Visual Styles
     style A fill:#ea4335,stroke:#333,stroke-width:2px,color:#fff
@@ -57,7 +57,7 @@ graph TD
     linkStyle 2 stroke:#34a853,stroke-width:3px;
     linkStyle 3 stroke:#34a853,stroke-width:3px;
     linkStyle 4 stroke:#34a853,stroke-width:3px;
-    linkStyle 9 stroke:#ea4335,stroke-width:3px;
+    linkStyle 10 stroke:#ea4335,stroke-width:3px;
 ```
 
 ## Architectural Workflow Breakdown
