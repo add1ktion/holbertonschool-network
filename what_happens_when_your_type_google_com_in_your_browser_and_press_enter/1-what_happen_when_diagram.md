@@ -27,8 +27,8 @@ graph TD
     end
 
     %% Request Flow
-    A -->|Input: [https://www.google.com](https://www.google.com)| B
-    B -->|Returns IP: 142.250.190.46| A
+    A -->|User types URL| B
+    B -->|Returns IP Address| A
     
     A ==>|2. HTTPS Request via Port 443<br>SSL/TLS Encrypted Tunnel| C
     
@@ -37,11 +37,11 @@ graph TD
     D ==>|Traffic Distribution| E
     E ==>|Dynamic Request| F
     
-    %% Bidirectional Link Syntax for Database
+    %% Database Interaction
     F -->|Query Data| G
     G -->|Return Data| F
     
-    %% Response Flow (Fixed syntax for GitHub)
+    %% Response Flow
     F -->|Generates HTML/CSS/JS Page| E
     E -->|HTTP Response| D
     D ==>|Encrypted Stream| C
